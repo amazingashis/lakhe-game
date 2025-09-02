@@ -114,26 +114,6 @@ function moveLakhe() {
   lakhe.frame = (lakhe.frame + 1) % 4;
 }
 
-  // Simple chase logic, restricted to road
-  let roadWidth = Math.max(200, canvas.width * 0.25);
-  let leftBound = canvas.width/2 - roadWidth/2 + lakhe.width/2;
-  let rightBound = canvas.width/2 + roadWidth/2 - lakhe.width/2;
-  let topBound = lakhe.height/2;
-  let bottomBound = canvas.height - lakhe.height/2;
-  let dx = kid.x - lakhe.x;
-  let dy = kid.y - lakhe.y;
-  let dist = Math.sqrt(dx*dx + dy*dy);
-  if (dist > 1) {
-    lakhe.x += (dx/dist) * lakhe.speed;
-    lakhe.y += (dy/dist) * lakhe.speed;
-    // Clamp to road
-    lakhe.x = Math.max(leftBound, Math.min(rightBound, lakhe.x));
-    lakhe.y = Math.max(topBound, Math.min(bottomBound, lakhe.y));
-  }
-  // Animate Lakhe frame (if using sprite sheet)
-  lakhe.frame = (lakhe.frame + 1) % 4;
-}
-
 function checkCollision() {
   let dx = kid.x - lakhe.x;
   let dy = kid.y - lakhe.y;
